@@ -88,7 +88,7 @@ git clone https://github.com/ajsnyder20/Sports-and-Calendar-Dashboard
 Move into the project folder:
 
 ```bash
-cd sports-dashboard
+cd Sports-and-Calendar-Dashboard
 ```
 
 Create a virtual environment:
@@ -97,10 +97,10 @@ Create a virtual environment:
 python -m venv .venv
 ```
 
-On Windows PowerShell, activate it with:
+activate it with:
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
+source .venv/bin/activate
 ```
 
 Install the required packages:
@@ -127,7 +127,7 @@ Do not use your normal Apple Account password.
 
 Sign in to your Apple Account and create an app-specific password.
 
-1. Go to your Apple Account settings.
+1. Go to your Apple Account settings (account.apple.com).
 2. Open **Sign-In and Security**.
 3. Select **App-Specific Passwords**.
 4. Create a password for Sports Central.
@@ -143,8 +143,6 @@ When configuring the program, use:
 - Your Apple app-specific password
 
 The password should be stored through the operating system's credential manager rather than directly in the source code.
-
-On Windows, Python's `keyring` package uses Windows Credential Manager.
 
 ---
 
@@ -264,69 +262,6 @@ dist/main.exe
 ```
 
 The `--collect-all` options are important because some dependencies load modules dynamically and PyInstaller may not detect them automatically.
-
----
-
-# Security
-
-Never commit any of the following to GitHub:
-
-- Apple Account passwords
-- Apple app-specific passwords
-- Environment variables containing credentials
-- `settings.json` if it contains personal account information
-- Credential files
-- Personal calendar exports
-- Personal photos
-
-These files are excluded through `.gitignore`.
-
----
-
-# Project Structure
-
-```text
-sports-dashboard/
-│
-├── main.py
-│
-├── sports_data.py
-│├── calendar_data.py
-├── settings.py
-├── setup_window.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-│
-└── images/
-    └── .gitkeep
-```
-
-### `main.py`
-
-Contains the main Tkinter interface, including:
-
-- Calendar display
-- Weekly schedule
-- Photo gallery
-- Score ticker
-- Settings interface
-
-### `sports_data.py`
-
-Handles retrieving and processing sports information.
-
-### `calendar_data.py`
-
-Handles Apple Calendar / CalDAV connections and converts calendar events into a format the dashboard can display.
-
-### `settings.py`
-
-Handles application settings and secure credential storage.
-
-### `setup_window.py`
-
-Optional first-run setup interface for configuring accounts and preferences.
 
 ---
 
