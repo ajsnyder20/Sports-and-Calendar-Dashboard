@@ -9,6 +9,7 @@ import settings
 from sports_data import get_scores
 from settings import load_settings, save_settings
 from tkinter import filedialog
+from setup_window import SetupWindow
 
 
 
@@ -1563,7 +1564,39 @@ class SportsDashboard:
 # ============================================================
 
 root = tk.Tk()
+root.title("Sports Central")
 
-app = SportsDashboard(root)
+settings = load_settings()
 
+
+def start_dashboard():
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    root.deiconify()
+
+    SportsDashboard(root)
+
+
+if not settings.get("apple_email"):
+
+    root.withdraw()
+
+    def setup_complete():
+        root.deiconify()
+        start_dashboard()
+
+    setup = SetupWindow(
+        root,
+        setup_complete
+    )
+    settings["setup_complete"] = True
+    save_settings(settings)
+    setup.window.deiconify()
+
+else:
+    start_dashboard()
+
+
+root.mainloop()
 root.mainloop()
