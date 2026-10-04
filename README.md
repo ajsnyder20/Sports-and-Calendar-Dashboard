@@ -82,7 +82,7 @@ pip install -r requirements.txt
 Clone the repository:
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/ajsnyder20/Sports-and-Calendar-Dashboard
 ```
 
 Move into the project folder:
